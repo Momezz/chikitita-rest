@@ -58,11 +58,15 @@ export async function handleUpdateServiceCatalog(
 ) {
   const { id } = req.params;
   const data = req.body;
-  const servicecatalog = await updateServiceCatalog(id, data);
-  if (!servicecatalog) {
-    return res.status(404).json({ message: "ServiceCatalog not found" });
+  try {
+    const servicecatalog = await updateServiceCatalog(id, data);
+    if (!servicecatalog) {
+      return res.status(404).json({ message: "ServiceCatalog not found" });
+    }
+    return res.status(200).json(servicecatalog);
+  } catch (error) {
+    return res.status(500).json(error);
   }
-  return res.status(200).json(servicecatalog);
 }
 
 handleDeleteServiceCatalog
