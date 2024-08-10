@@ -58,11 +58,16 @@ export async function handleUpdatePublication(
 ) {
   const { id } = req.params;
   const data = req.body;
-  const publication = await updatePublication(id, data);
-  if (!publication) {
-    return res.status(404).json({ message: "Publication not found" });
+  try {
+    const publication = await updatePublication(id, data);
+    if (!publication) {
+      return res.status(404).json({ message: "Publication not found" });
+    }
+    return res.status(200).json(publication);
+  } catch (error) {
+    return res.status(500).json(error);
   }
-  return res.status(200).json(publication);
+
 }
 
 handleDeletePublication
