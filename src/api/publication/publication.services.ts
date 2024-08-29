@@ -2,7 +2,7 @@ import Publication, { PublicationDocument } from './publication.model';
 import { DocumentDefinition } from 'mongoose';
 
 export function getAllPublications() {
-  return Publication.find({})
+  return Publication.find({}).sort({ createdAt: -1 });
 }
 
 export function getPublicationById(id: string) {

@@ -2,7 +2,7 @@ import ImageBank, { ImageBankDocument } from './imageBank.model';
 import { DocumentDefinition } from 'mongoose';
 
 export function getAllImageBanks() {
-  return ImageBank.find({});
+  return ImageBank.find({}).sort({ createdAt: -1 });
 }
 
 export function getImageBankById(id: string) {

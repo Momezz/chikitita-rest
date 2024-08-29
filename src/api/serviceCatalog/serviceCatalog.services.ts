@@ -2,7 +2,7 @@ import ServiceCatalog, { ServiceCatalogDocument } from './serviceCatalog.model';
 import { DocumentDefinition } from 'mongoose';
 
 export function getAllServiceCatalogs() {
-  return ServiceCatalog.find({})
+  return ServiceCatalog.find({}).sort({ createdAt: -1 });
 }
 
 export function getServiceCatalogById(id: string) {
