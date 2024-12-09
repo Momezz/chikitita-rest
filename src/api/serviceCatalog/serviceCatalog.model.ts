@@ -1,24 +1,30 @@
 import { Schema, model } from 'mongoose';
 
 export interface ServiceCatalogDocument extends Document {
-  servicecatalogTitle: String;
-  description: String;
   image: String;
+  servicecatalogTitle: String;
+  price: Number;
+  priceOnOffer: Number;
 }
 
 const servicecatalogSchema = new Schema({
+  image: {
+    type: String,
+    require: true,
+  },
   servicecatalogTitle: {
     type: String,
     required: true,
   },
-  description: {
+  price: {
     type: String,
     required: true,
   },
-  image: {
+  priceOnOffer: {
     type: String,
-    require: true,
-  }
+    required: true,
+  },
+  
 }, {
   timestamps: true,
   versionKey: false,
